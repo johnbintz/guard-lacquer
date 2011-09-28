@@ -38,7 +38,7 @@ module Guard
     def stop
       @backend.stop
 
-      notify("Until next time...", :title => 'guard-varnish')
+      notify "Until next time..."
     end
 
     def reload
