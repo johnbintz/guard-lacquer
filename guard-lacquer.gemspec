@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = ["John Bintz"]
   s.email       = ["john@coswellproductions.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Guard to run Varnish using Lacquer}
+  s.description = %q{Guard to run Varnish using Lacquer}
 
   s.rubyforge_project = "guard-lacquer"
 
@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency 'lacquer'
+  s.add_runtime_dependency 'lacquer', '>= 0.5.0.beta'
   s.add_runtime_dependency 'guard'
 
   s.add_development_dependency 'rspec', '~> 2.6.0'
