@@ -32,8 +32,8 @@ module Guard
         )
       end
 
-      @frontend = Varnishd.new(@options)
-      @logger = VarnishNCSA.new(@options)
+      @runners = [ Varnishd.new(@options) ]
+      @runners << VarnishNCSA.new(@options) if @options[:log_dir]
 
       if !File.file?(varnish_erb = 'config/varnish.vcl.erb')
         UI.info "No config/varnish.vcl.erb found, copying default from Lacquer..."
@@ -44,7 +44,7 @@ module Guard
     end
 
     def start
-      [ @frontend, @logger ].each do |which|
+      @runners.each do |which|
         which.stop if which.running?
         which.start
       end
@@ -53,7 +53,7 @@ module Guard
     end
 
     def stop
-      [ @frontend, @logger ].each(&:stop)
+      @runners.each(&:stop)
 
       notify "Until next time..."
     end
