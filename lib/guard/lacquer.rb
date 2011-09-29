@@ -61,22 +61,22 @@ module Guard
     end
 
     def reload
+      true
+    end
+
+    def run_all
       stop
       start
     end
 
-    def run_all
-      true
-    end
-
     # Called on file(s) modifications
     def run_on_change(paths)
-      restart
+      run_all
     end
 
     # Called on file(s) deletions
     def run_on_deletion(paths)
-      restart
+      run_all
     end
 
     private
