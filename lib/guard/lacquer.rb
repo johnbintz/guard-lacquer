@@ -32,8 +32,6 @@ module Guard
         )
       end
 
-      p @options
-
       @frontend = Varnishd.new(@options)
       @logger = VarnishNCSA.new(@options)
 
